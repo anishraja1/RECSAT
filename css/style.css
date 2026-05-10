@@ -1,0 +1,53 @@
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+#dna_sequence {
+    width: 970px;
+    height: 190px;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+.summary {
+    margin-top: 10px;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.fragment-legend {
+    font-size: 13px;
+    color: #666666;
+    margin-bottom: 10px;
+}
+
+.results-divider {
+    margin: 30px 0;
+    border: none;
+    border-top: 2px solid #000000;
+}
+
+.page-number {
+    display: inline-block;
+    padding: 6px 10px;
+    margin: 0 4px;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.page-number:hover {
+    background-color: #eeeeee;
+}
+
+.active-page {
+    font-weight: bold;
+    background-color: #dddddd;
+}
+
+#reset_button {
+    margin-left: 10px;
+}
