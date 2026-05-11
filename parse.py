@@ -1,23 +1,18 @@
 import re
 import mysql.connector
-import os
+import sys
 
-# Environmental variable required:
-# DATABASE_PASSWORD must be set before running the script
-# Example (Mac/Linux): export DATABASE_PASSWORD="your_password"
+from db_config import DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
+
+connection = mysql.connector.connect(
+    host=DB_HOST,
+    user=DB_USER,
+    password=DB_PASSWORD,
+    database=DB_NAME
+)
 
 def main():
-    password = os.getenv("DATABASE_PASSWORD")
-    if not password:
-        raise ValueError("DATABASE_PASSWORD environment variable not set")
     
-    # Connect to database
-    connection = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password=password,
-        database="renzyme_db"
-    )
     cursor = connection.cursor()
 
     # Opens the file

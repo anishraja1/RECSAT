@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
 import json
 import os
+import sys
 import re
 import mysql.connector
 import urllib.parse
+
+from db_config import DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
 
 # Data dictionary for IUPAC to regex conversion.
 IUPAC = {
@@ -47,10 +50,10 @@ elif not re.fullmatch(r"[ATCG]+", sequence):
 else:
     try:
         connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password=os.getenv("DATABASE_PASSWORD"),
-            database="renzyme_db"
+            host=DB_HOST,
+            user=DB_USER,
+            password=DB_PASSWORD,
+            database=DB_NAME
         )
 
         cursor = connection.cursor()

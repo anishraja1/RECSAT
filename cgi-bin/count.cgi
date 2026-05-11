@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 
 import mysql.connector
-import os
+import sys
 
+from db_config import DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
 connection = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password=os.getenv("DATABASE_PASSWORD"),
-    database="renzyme_db"
+    host=DB_HOST,
+    user=DB_USER,
+    password=DB_PASSWORD,
+    database=DB_NAME
 )
-
 cursor = connection.cursor()
 
 cursor.execute("""

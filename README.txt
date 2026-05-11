@@ -1,4 +1,4 @@
-# RECSAT – Restriction Enzyme Cut Analysis Tool
+# RECSAT – Restriction Enzyme Cut Site Analysis Tool
 
 ## About
 
@@ -23,26 +23,40 @@ The system integrates a MySQL database containing Type II restriction enzymes th
 - Recommended system resources of 1 GB RAM and 1.8 Ghz CPU per user.
 - Recommended network speed of at least 2 Mbps
 
-## Usage
+## Usage (JHU Server)
 
 1. Connect to the JHU VPN and log in to the JHU server.
 2. Access the application at the following URL: 
-	http://araja5@bfx3.aap.jhu.edu/araja5/final-project/
+	http://bfx3.aap.jhu.edu/araja5/final-project/
 3. Enter a DNA sequence between 10–1000 bp
 4. Click “Analyze DNA Sequence”
 5. Use pagination to browse results and click on "Reset" to clear input
 
+## Usage (Local Machine)
+
+1. Import the provided enzyme.sql database dump into MySQL
+2. Open db_config.py inside the cgi-bin/ directory and modify the MySQL login credentials to match your local MySQL configuration
+3. Configure your MySQL username, password, host, and database name inside db_config.py.
+4. From the project directory, start a local server:
+	python3 -m http.server --cgi 8000
+5. Open the application in your browser:
+	http://localhost:8000/
+6. Enter a DNA sequence between 10–1000 bp
+7. Click “Analyze DNA Sequence”
+8. Use pagination to browse results and click on "Reset" to clear input
+
 
 ## Project Structure
 
-- **count.cgi** – Computes and displays the total number of restriction enzymes used by the application.  
-- **itype2.txt** – Contains Type II restriction enzyme information such as enzyme name and recognition sequence with cleavage site.  
-- **parse.py** – Parses `itype2.txt`, filters irregular cleavage notation, and generates a MySQL database.  
-- **index.html** – Provides the main web interface and page structure.  
-- **app.js** – Handles user interaction, fetches backend results, and renders interactive visualizations.  
-- **analysis.cgi** – Processes user input, queries the database, and returns structured JSON results.  
-- **style.css** – Defines the visual styling and layout of the web interface.
-
+- count.cgi – Computes and displays the total number of restriction enzymes used by the application.  
+- itype2.txt – Contains Type II restriction enzyme information such as enzyme name and recognition sequence with cleavage site.  
+- parse.py – Parses `itype2.txt`, filters irregular cleavage notation, and generates a MySQL database.  
+- index.html – Provides the main web interface and page structure.  
+- app.js – Handles user interaction, fetches backend results, and renders interactive visualizations.  
+- analysis.cgi – Processes user input, queries the database, and returns structured JSON results.  
+- db_config.py - Stores MySQL database connection credentials used by the CGI backend script.
+- style.css – Defines the visual styling and layout of the web interface.
+- enzyme.sql - MySQL database dump containing the enzyme table schema
 
 ## Notes
 
